@@ -10,6 +10,11 @@ def find_count_evan_elements(array) #31 - найти количество чет
   return array.reduce(0) {|count, x| x % 2 == 0 ? count+=1 : count}
 end
 
+def find_count_minimal_elements(array) #43 - найти количество минимальных элементов
+  min = array.min
+  return array.reduce(0) {|count, x| min == x ? count+=1 : count}
+end
+
 def select_method(num_method, file_name) #функция принимает два значения номер функция и имя файла (путь) с массивом чисел возвращает значение выбраной функции указаного массива 
   array = IO.read(file_name).split.map(&:to_i)
   case num_method
@@ -19,6 +24,8 @@ def select_method(num_method, file_name) #функция принимает дв
     return cyclic_shift_1_right(array)
   when "3"
     return find_count_evan_elements(array)
+  when "4"
+    return find_count_minimal_elements(array)
   end
 end
 
