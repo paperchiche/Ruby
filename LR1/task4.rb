@@ -15,6 +15,10 @@ def find_count_minimal_elements(array) #43 - найти количество м�
   return array.reduce(0) {|count, x| min == x ? count+=1 : count}
 end
 
+def sort_by_count_elements_descending(array) #55 - сортирует по частоте встречаемости элементов (по убыванию)
+  return array.sort_by {|x| array.count(x)}.reverse
+end
+
 def select_method(num_method, file_name) #функция принимает два значения номер функция и имя файла (путь) с массивом чисел возвращает значение выбраной функции указаного массива 
   array = IO.read(file_name).split.map(&:to_i)
   case num_method
@@ -26,6 +30,8 @@ def select_method(num_method, file_name) #функция принимает дв
     return find_count_evan_elements(array)
   when "4"
     return find_count_minimal_elements(array)
+  when "5"
+    return sort_by_count_elements_descending(array)
   end
 end
 
