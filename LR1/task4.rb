@@ -6,6 +6,9 @@ def cyclic_shift_1_right(array) #19 - сдвигает элементы масс
   return array[0...-1].unshift(array[-1])
 end
 
+def find_count_evan_elements(array) #31 - найти количество четных элементов
+  return array.reduce(0) {|count, x| x % 2 == 0 ? count+=1 : count}
+end
 
 def select_method(num_method, file_name) #функция принимает два значения номер функция и имя файла (путь) с массивом чисел возвращает значение выбраной функции указаного массива 
   array = IO.read(file_name).split.map(&:to_i)
@@ -14,6 +17,8 @@ def select_method(num_method, file_name) #функция принимает дв
     return cyclic_shift_2_right(array)
   when "2"
     return cyclic_shift_1_right(array)
+  when "3"
+    return find_count_evan_elements(array)
   end
 end
 
