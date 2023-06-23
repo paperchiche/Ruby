@@ -105,8 +105,9 @@ def git_to_s
 end
 
 def contact
-  return "phone: #{@Phone}" unless @Phone.nil?
-  return "telegram: #{@Tg}" unless @Tg.nil?
-  return "mail: #{@Mail}" unless @Mail.nil?
-  return ""
+  s=""
+  s+= ", phone: #{@Phone}" unless @Phone.nil?
+  s+= ", telegram: #{@Tg}" unless @Tg.nil?
+  s+= ", mail: #{@Mail}" unless @Mail.nil?
+  return s
 end
