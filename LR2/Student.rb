@@ -93,3 +93,20 @@ class Student
     inf
   end
 end
+
+public
+def getInfo
+  "Name: "+@Surname+" "+@Name[0]+@Father_name[0]+git_to_s+contact
+end
+
+def git_to_s
+  return "" if @Git.nil?
+  return ", git: #{@Git} "
+end
+
+def contact
+  return "phone: #{@Phone}" unless @Phone.nil?
+  return "telegram: #{@Tg}" unless @Tg.nil?
+  return "mail: #{@Mail}" unless @Mail.nil?
+  return ""
+end
