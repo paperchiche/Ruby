@@ -1,12 +1,10 @@
 class Student
-  attr_accessor :ID, :Name, :Surname, :Father_name, :Git, :Phone, :Tg, :Mail, :Git
+  attr_reader :ID, :Name, :Surname, :Father_name, :Git, :Phone, :Tg, :Mail, :Git
   def initialize(name:, surname:, father_name:, id:nil, git:nil, phone:nil, tg:nil, mail:nil)
     self.Name, self.Surname, self.Father_name = name, surname, father_name
     self.ID = id
     self.Git = git
-    self.Phone = phone
-    self.Mail = mail
-    self.Tg = tg
+    set_contacts(mail:mail, tg:tg, phone:phone)
   end
 
   def self.phone_valid?(phone)
@@ -47,16 +45,16 @@ class Student
   end
 
   def self.acc_valid?(account)
-    account.match(/^@[\w\d-\-_]+$/)
+    account.match(/^@[\w\d\-_]+$/)
   end
 
   def Tg=(tg)
-    raise ArgumentError("Invalid value, Telegram account's correct form is @X \nwhere X is english alphabet sequence") if !tg.nil? && !Student.acc_valid?(tg)
+    raise ArgumentError, "Invalid value, Telegram account's correct form is @X where X is english alphabet sequence" if !tg.nil? && !Student.acc_valid?(tg)
     @Tg = tg
   end
 
   def Git=(git)
-    raise ArgumentError("Invalid value, Git's correct form is @X \nwhere X is english alphabet sequence") if !git.nil? && !Student.acc_valid?(git)
+    raise ArgumentError, "Invalid value, Git's correct form is @X where X is english alphabet sequence" if !git.nil? && !Student.acc_valid?(git)
     @Git = git
   end
 
@@ -66,7 +64,7 @@ class Student
 
 
   def Mail=(mail)
-    raise ArgumentError("Invalid value, Mail's correct form is X@X.X \nwhere X is english alphabet sequence") if !mail.nil? && !Student.mail_valid?(mail)
+    raise ArgumentError, "Invalid value, Mail's correct form is X@X.X where X is english alphabet sequence" if !mail.nil? && !Student.mail_valid?(mail)
     @Mail = mail
   end
 
@@ -79,12 +77,18 @@ class Student
   end
 
   def validate
-    self.git? || self.contacts?
+    self.git? && self.contacts?
+  end
+
+  def set_contacts(mail:nil, tg:nil, phone:nil)
+    self.Phone = phone if phone
+    self.Mail = mail if mail
+    self.Tg = tg if tg
   end
 
 
   def to_s
-    inf=@Name.to_s+" "+@Surname.to_s+" "+@Father_name.to_s+" "+@ID.to_s
+    inf=@Name.to_s+" "+@Surname.to_s+" "+@Father_name.to_s+" "+@Tg.to_s+" "+@Git.to_s
     inf
   end
 end
