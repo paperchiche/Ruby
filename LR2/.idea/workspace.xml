@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72a38c91-f679-473c-900f-fc64a969aae5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Student.rb" beforeDir="false" afterPath="$PROJECT_DIR$/Student.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.rb" beforeDir="false" afterPath="$PROJECT_DIR$/main.rb" afterDir="false" />
-    </list>
+    <list default="true" id="72a38c91-f679-473c-900f-fc64a969aae5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1687519044371</updated>
-      <workItem from="1687519045517" duration="1144000" />
+      <workItem from="1687519045517" duration="1518000" />
     </task>
     <servers />
   </component>
@@ -63,6 +60,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LR2@main.rcov" NAME="main Coverage Results" MODIFIED="1687519919764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="LR2" />
+    <SUITE FILE_PATH="coverage/LR2@main.rcov" NAME="main Coverage Results" MODIFIED="1687520244275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="LR2" />
   </component>
 </project>
