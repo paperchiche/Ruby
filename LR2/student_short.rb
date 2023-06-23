@@ -1,18 +1,38 @@
 class Student_short
-  attr_reader :ID, :Initials,:Git,:Contact
-  def initialize(id:, name:, git:, contact:)
-    @ID = id
-    @Initials = name
-    @Git = git
-    @Contact = contact
+  attr_reader :ID, :Surname, :Initials,:Git,:Contact
+  def initialize(student)
+    @ID = student.ID
+    @Surname = student.Surname
+    @Initials = "#{student.Name[0]}. #{student.Father_name[0]}."
+    @Git = student.Git unless student.Git.nil?
+    @Contact = student.contact
   end
 
-  def self.from_student(student)
-    st_sh = student.getInfo.split(', ').map{|x| x.split(': ')}.map{|x| [x[0].to_sym,x[1]]}.to_h
-    new(id:student.ID,name:st_sh[:name],git:st_sh[:git],contact:st_sh.reject{|key,value| key==:name||key==:git}.shift)
+  def self.from_s(str)
+    Student_short.new(Student.parse_str(str))
   end
-  def self.from_s(id, str)
-    st_str = str.split(',').map{|x| x.split(':')}.map{|x| [x[0].to_sym,x[1]]}.to_h
-    new id:id,name:st_str[:name],git:st_str[:git],contact:st_str[:contact]
+
+  def short_name
+    "#{@Surname} #{@Initials}"
   end
+
+  def to_s
+    result = short_name
+    result += " id=#{@ID} " unless @ID.nil?
+    result += @Contact unless @Contact.nil?
+    result
+  end
+
+  def git?
+    !@Git.nil?
+  end
+
+  def contact?
+    !@Contact.nil?
+  end
+
+  def validate?
+    git? && contact?
+  end
+
 end

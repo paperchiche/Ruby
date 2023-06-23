@@ -1,4 +1,6 @@
-class Student
+require_relative 'student_short'
+
+class Student<Student_short
   attr_reader :ID, :Name, :Surname, :Father_name, :Git, :Phone, :Tg, :Mail, :Git
   def initialize(name:, surname:, father_name:, id:nil, git:nil, phone:nil, tg:nil, mail:nil)
     self.Name, self.Surname, self.Father_name = name, surname, father_name
@@ -92,17 +94,13 @@ class Student
     inf+=@Tg.to_s unless @Tg.nil?
     inf
   end
-end
+
 
 public
 def getInfo
-  "Name: "+@Surname+" "+@Name[0]+@Father_name[0]+git_to_s+contact
+  "#{short_name}, #{contact}, #{git_to_s}"
 end
 
-def git_to_s
-  return "" if @Git.nil?
-  return ", git: #{@Git} "
-end
 
 def contact
   s=""
@@ -110,4 +108,50 @@ def contact
   s+= ", telegram: #{@Tg}" unless @Tg.nil?
   s+= ", mail: #{@Mail}" unless @Mail.nil?
   return s
+end
+
+def self.parse_str(str)
+  str_student=str.split(', ').map{|x| x.split(':')}.to_h
+  raise ArgumentError,"Invalid name" unless str_student.key?("name") && Student.name_valid?(str_student["name"])
+  raise ArgumentError,"Invalid surname" unless str_student.key?("surname") && Student.name_valid?(str_student["surname"])
+  raise ArgumentError,"Invalid father's name" unless str_student.key?("father_name") && Student.name_valid?(str_student["father_name"])
+  if str_student.key?("tg")
+    raise ArgumentError, "Invalid telegram" unless Student.acc_valid?(str_student["tg"])
+  end
+  if str_student.key?("git")
+    raise ArgumentError, "Invalid git" unless Student.acc_valid?(str_student["git"])
+  end
+  if str_student.key?("mail")
+    raise ArgumentError, "Invalid mail addres" unless Student.mail_valid?(str_student["mail"])
+  end
+  if str_student.key?("id")
+    raise ArgumentError, "Invalid id" unless Student.id_valid?(str_student["id"])
+  end
+  if str_student.key?("phone")
+    raise ArgumentError, "Invalid phone number" unless Student.phone_valid?(str_student["phone"])
+  end
+  Student.new(name:str_student["name"],surname:str_student["surname"],father_name:str_student["father_name"], mail:str_student["mail"], git:str_student["git"], tg:str_student["tg"])
+
+end
+
+protected
+  def git_to_s
+    return "" if git?
+    ", git: #{@Git}"
+  end
+
+  def mail_to_s
+    return "" if self.Mail.nil?
+    ", email: #{@Mail}"
+  end
+  def tg_to_s
+    return "" if self.Tg.nil?
+    ", telegram: #{@Tg}"
+  end
+
+  def phone_to_s
+  return "" if self.Phone.nil?
+  ", phone: #{@Phone}"
+  end
+
 end
