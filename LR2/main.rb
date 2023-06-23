@@ -1,5 +1,5 @@
 require_relative 'student'
 
-student = Student.new(0,"Иванов", "Иван", "Иванович", "+7924361345", "iii", "ii@mail.ru", "iii")
+student = Student.new(name:"Иванов", surname:"Иван", father_name:"Иванович", id:23)
 puts student.to_s
 
