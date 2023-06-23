@@ -9,7 +9,7 @@ class Student
     self.Tg = tg
   end
 
-  def phone_valid?(phone)
+  def self.phone_valid?(phone)
     if phone.match(/^\+?[7,8]{1}\-\d{3}\-\d{3}\-\d{2}\-\d{2}$/)
       "Match"
     else
