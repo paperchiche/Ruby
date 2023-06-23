@@ -70,6 +70,19 @@ class Student
     @Mail = mail
   end
 
+  def git?
+    !self.Git.nil?
+  end
+
+  def contacts?
+    !self.Phone.nil? || !self.Tg.nil? || !self.Mail.nil?
+  end
+
+  def validate
+    self.git? || self.contacts?
+  end
+
+
   def to_s
     inf=@Name.to_s+" "+@Surname.to_s+" "+@Father_name.to_s+" "+@ID.to_s
     inf
