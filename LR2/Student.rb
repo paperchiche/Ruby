@@ -50,4 +50,8 @@ class Student
   def Git=(git)
     @Git=git
   end
+  def to_s
+    inf=@Name.to_s+" "+@Surname.to_s+" "+@Father_name.to_s
+    inf
+  end
 end
