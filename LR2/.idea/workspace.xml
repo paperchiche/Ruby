@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="72a38c91-f679-473c-900f-fc64a969aae5" name="Changes" comment="" />
+    <list default="true" id="72a38c91-f679-473c-900f-fc64a969aae5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/data_list.rb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +56,7 @@
       <updated>1687519044371</updated>
       <workItem from="1687519045517" duration="8687000" />
       <workItem from="1687551743126" duration="866000" />
-      <workItem from="1687685638390" duration="1372000" />
+      <workItem from="1687685638390" duration="1739000" />
     </task>
     <servers />
   </component>
