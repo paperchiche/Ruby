@@ -1,5 +1,5 @@
-require 'Super_Student'
 require_relative 'Super_Student'
+require_relative 'Student'
 
 class Student_short<Super_Student
   attr_reader :ID, :Surname, :Initials,:Git,:Contact
@@ -29,9 +29,6 @@ class Student_short<Super_Student
     result
   end
 
-  def git?
-    !@Git.nil?
-  end
 
   def contact?
     !@Contact.nil?

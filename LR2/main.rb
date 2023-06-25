@@ -1,4 +1,4 @@
-require_relative 'student'
+require_relative 'Student'
 require_relative 'student_short'
 require_relative 'Super_Student'
 

@@ -14,7 +14,7 @@ class Super_Student
   end
 
   def ID=(id)
-    raise ArgumentError("Invalid value, id is digit sequence") if !id.nil? && !Student.id_valid?(id)
+    raise ArgumentError("Invalid value, id is digit sequence") if !id.nil? && !Super_Student.id_valid?(id)
     @ID = id
   end
 
@@ -23,17 +23,17 @@ class Super_Student
   end
 
   def Name=(name)
-    raise ArgumentError("Invalid value, Name is russian alphabet sequence") if !name.nil? && !Student.name_valid?(name)
+    raise ArgumentError("Invalid value, Name is russian alphabet sequence") if !name.nil? && !Super_Student.name_valid?(name)
     @Name = name
   end
 
   def Surname=(surname)
-    raise ArgumentError("Invalid value, Surname is russian alphabet sequence") if !surname.nil? && !Student.name_valid?(surname)
+    raise ArgumentError("Invalid value, Surname is russian alphabet sequence") if !surname.nil? && !Super_Student.name_valid?(surname)
     @Surname = surname
   end
 
   def Father_name=(father_name)
-    raise ArgumentError("Invalid value, Father name is russian alphabet sequence") if !father_name.nil? && !Student.name_valid?(father_name)
+    raise ArgumentError("Invalid value, Father name is russian alphabet sequence") if !father_name.nil? && !Super_Student.name_valid?(father_name)
     @Father_name = father_name
   end
 
