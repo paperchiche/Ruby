@@ -4,6 +4,8 @@ class Data_List
   attr_writer :List
   attr_accessor :Selected_id
 
+  private_class_method :new
+
   def initialize(objects)
     @List = objects
     @Selected_id = []

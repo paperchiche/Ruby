@@ -1,6 +1,6 @@
 require_relative 'student_short'
 
-class Student<Student_short
+class Student<Super_Student
   attr_reader :ID, :Name, :Surname, :Father_name, :Git, :Phone, :Tg, :Mail, :Git
   def initialize(name:, surname:, father_name:, id:nil, git:nil, phone:nil, tg:nil, mail:nil)
     self.Name, self.Surname, self.Father_name = name, surname, father_name
@@ -16,34 +16,6 @@ class Student<Student_short
   def Phone=(phone)
     raise ArgumentError("Invalid value, phone number's correct form is \"+7(8)-XXX-XXX-XX-XX\"") if !phone.nil? && !Student.phone_valid?(phone)
     @Phone = phone
-  end
-
-  def self.id_valid?(id)
-    String(id).match(/^\d+$/)
-  end
-
-  def ID=(id)
-    raise ArgumentError("Invalid value, id is digit sequence") if !id.nil? && !Student.id_valid?(id)
-    @ID = id
-  end
-
-  def self.name_valid?(name)
-    name.match(/^[А-Яа-я]+$/)
-  end
-
-  def Name=(name)
-    raise ArgumentError("Invalid value, Name is russian alphabet sequence") if !name.nil? && !Student.name_valid?(name)
-    @Name = name
-  end
-
-  def Surname=(surname)
-    raise ArgumentError("Invalid value, Surname is russian alphabet sequence") if !surname.nil? && !Student.name_valid?(surname)
-    @Surname = surname
-  end
-
-  def Father_name=(father_name)
-    raise ArgumentError("Invalid value, Father name is russian alphabet sequence") if !father_name.nil? && !Student.name_valid?(father_name)
-    @Father_name = father_name
   end
 
   def self.acc_valid?(account)

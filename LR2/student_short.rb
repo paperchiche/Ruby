@@ -1,4 +1,6 @@
-class Student_short
+require 'Super_Student'
+
+class Student_short<Super_Student
   attr_reader :ID, :Surname, :Initials,:Git,:Contact
   def initialize(id:, surname:, initials:, git:, contact:)
     @ID = id
