@@ -3,10 +3,10 @@ class Super_Student
   attr_accessor :Name, :Surname, :Father_name, :ID
 
   def initialize(name, surname, father_name, id)
-    @Name = name
-    @Surname = surname
-    @Father_name = father_name
-    @ID = id
+    self.Name = name
+    self.Surname = surname
+    self.Father_name = father_name
+    self.ID = id
   end
 
   def self.id_valid?(id)
@@ -19,11 +19,11 @@ class Super_Student
   end
 
   def self.name_valid?(name)
-    name.match(/^[А-Яа-я]+$/)
+    name.match(/^[А-Я][^А-Я\d]+$/)
   end
 
   def Name=(name)
-    raise ArgumentError("Invalid value, Name is russian alphabet sequence") if !name.nil? && !Super_Student.name_valid?(name)
+    raise ArgumentError("Invalid value, Name is russian alphabet sequence") unless Super_Student.name_valid?(name)
     @Name = name
   end
 
