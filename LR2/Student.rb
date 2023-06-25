@@ -1,4 +1,5 @@
 require_relative 'student_short'
+require_relative 'Super_Student'
 
 class Student<Super_Student
   attr_reader :ID, :Name, :Surname, :Father_name, :Git, :Phone, :Tg, :Mail, :Git
@@ -82,6 +83,10 @@ def contact
   s+= ", mail: #{@Mail}" unless @Mail.nil?
   return s
 end
+
+  def validate?
+    git_to_s!="" && self.contact!=""
+  end
 
 def self.parse_str(str)
   str_student=str.split(', ').map{|x| x.split(':')}.to_h

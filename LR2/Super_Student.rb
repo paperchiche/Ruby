@@ -1,5 +1,4 @@
 class Super_Student
-  private_class_method :new
 
   attr_accessor :Name, :Surname, :Father_name, :ID
 
@@ -36,6 +35,19 @@ class Super_Student
   def Father_name=(father_name)
     raise ArgumentError("Invalid value, Father name is russian alphabet sequence") if !father_name.nil? && !Student.name_valid?(father_name)
     @Father_name = father_name
+  end
+
+  def short_fio
+    "#{Surname} #{Name.upcase[0]}. #{Father_name.upcase[0]}"
+  end
+
+  def self.parse_str
+  end
+
+  def getInfo
+  end
+
+  def contacts
   end
 
 end
