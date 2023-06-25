@@ -98,6 +98,7 @@ class Student<Student_short
 
 public
 def getInfo
+  short=Student_short.from_student(self)
   "#{short_name}, #{contact}, #{git_to_s}"
 end
 
