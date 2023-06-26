@@ -1,12 +1,13 @@
 class Super_Student
 
-  attr_accessor :Name, :Surname, :Father_name, :ID
+  attr_accessor :Name, :Surname, :Father_name, :ID, :Git
 
-  def initialize(name, surname, father_name, id)
+  def initialize(name, surname, father_name, id, git)
     self.Name = name
     self.Surname = surname
     self.Father_name = father_name
     self.ID = id
+    self.Git = git
   end
 
   def self.id_valid?(id)
@@ -37,7 +38,16 @@ class Super_Student
     @Father_name = father_name
   end
 
-  def short_fio
+  def self.acc_valid?(account)
+    account.match(/^@[\w\d\-_]+$/)
+  end
+
+  def Git=(git)
+    raise ArgumentError, "Invalid value, Git's correct form is @X where X is english alphabet sequence" if !git.nil? && !Student.acc_valid?(git)
+    @Git = git
+  end
+
+  def short_name
     "#{Surname} #{Name.upcase[0]}. #{Father_name.upcase[0]}"
   end
 
@@ -47,7 +57,10 @@ class Super_Student
   def getInfo
   end
 
-  def contacts
+  def contact
+  end
+
+  def to_s
   end
 
 end
