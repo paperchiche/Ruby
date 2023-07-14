@@ -28,7 +28,6 @@ class Student<Super_Student
     mail.match(/^[\w\d]+@[\w]+\.[\w]+$/)
   end
 
-
   def Mail=(mail)
     raise ArgumentError, "Invalid value, Mail's correct form is X@X.X where X is english alphabet sequence" if !mail.nil? && !Student.mail_valid?(mail)
     @Mail = mail

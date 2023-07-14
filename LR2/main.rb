@@ -16,6 +16,4 @@ puts sh_st1.to_s
 
 list = Data_List_Student_Short.new(objects: [sh_st1, sh_st2, sh_st3])
 puts(list.get_names)
-puts list.get_data
-
-
+puts(list.get_data)
