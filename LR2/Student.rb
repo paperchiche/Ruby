@@ -59,19 +59,23 @@ class Student<Super_Student
 
 
 public
-def getInfo
-  short=Student_short.from_student(self)
-  "#{short_name}, #{contact}, #{git_to_s}"
-end
+  def getInfo
+    short=Student_short.from_student(self)
+    "#{short_name}, #{contact}, #{git_to_s}"
+  end
 
+  def get_short
+    short=Student_short.from_student(self)
+    return short.short_name
+  end
 
-def contact
-  s=""
-  s+= self.phone_to_s
-  s+= self.tg_to_s
-  s+= self.mail_to_s
-  return s
-end
+  def contact
+    s=""
+    s+= self.phone_to_s
+    s+= self.tg_to_s
+    s+= self.mail_to_s
+    return s
+  end
 
   def validate?
     git? && self.contact!=""
@@ -85,7 +89,7 @@ def self.parse_str(str)
   str_student=str.split(', ').map{|x| x.split(':')}.to_h
   raise ArgumentError,"Invalid name " unless str_student.key?("name") && Student.name_valid?(str_student["name"])
   raise ArgumentError,"Invalid surname" unless str_student.key?("surname") && Student.name_valid?(str_student["surname"])
-  raise ArgumentError,"Invalid father's name" unless str_student.key?(:"father_name") && Student.name_valid?(str_student[:"father_name"])
+  raise ArgumentError,"Invalid father's name" unless str_student.key?("father_name") && Student.name_valid?(str_student["father_name"])
   if str_student.key?("tg")
     raise ArgumentError, "Invalid telegram" unless Student.acc_valid?(str_student["tg"])
   end

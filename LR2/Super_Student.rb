@@ -51,7 +51,7 @@ class Super_Student
     "#{Surname} #{Name.upcase[0]}. #{Father_name.upcase[0]}"
   end
 
-  def self.parse_str
+  def self.parse_str(str)
   end
 
   def getInfo
