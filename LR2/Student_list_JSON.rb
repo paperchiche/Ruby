@@ -1,28 +1,16 @@
-class Student_list_JSON<Basic_list
+class Student_list_JSON<Basic_format
   require_relative 'Basic_list'
   require_relative 'student'
   require_relative 'Data_List_Student_Short'
   require_relative 'student_short'
 
 
-  def read_list
-    file = File.open(self.file, "r")
-    text = file.read
-    json_hash = JSON.parse(text)
-    self.list = json_hash.map {|hash| Student.new(**hash)}
+  def hash_to_format(hash)
+    return hash.to_json
   end
 
-  def write_list
-    objects_array = self.list.map do |stud|
-      arr = stud.map do |name, value|
-        [name.to_s, value]
-      end
-      arr.to_h
-    end
-    json_text = JSON.pretty_generate(objects_array)
-    file_text = File.open(file, "w")
-    file_text.write(json_text)
-    file_text.close
+  def format_to_hash(str)
+    return JSON.parse(str)
   end
 
 end

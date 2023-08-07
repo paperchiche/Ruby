@@ -2,12 +2,14 @@ class Basic_list
   require_relative 'Student'
   require_relative 'data_list_student_short'
   require_relative 'student_short'
+  require_relative 'Basic_format'
 
-  attr_accessor :list, :file
+  attr_accessor :list, :file, :format
 
   protected
   def initialize(file:)
     self.file = file
+    raise FileNotFoundError unless File.exist?(file)
   end
 
   public
@@ -58,11 +60,23 @@ class Basic_list
   end
 
   def write_list
-
+    objects_array = self.list.map do |stud|
+      arr = stud.map do |name, value|
+        [name.to_s, value]
+      end
+      arr.to_h
+    end
+    text = format.hash_to_format(objects_array)
+    file_text = File.open(self.file, "w")
+    file_text.write(text)
+    file_text.close
   end
 
   def read_list
-
+    file = File.open(self.file, "r")
+    text = file.read
+    hash = format.format_to_hash(text)
+    self.list = hash.map{|stud| Student.new(**stud)}
   end
 
   private
