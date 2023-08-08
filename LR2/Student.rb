@@ -3,11 +3,9 @@ require_relative 'Super_Student'
 
 class Student<Super_Student
   attr_reader :ID, :Name, :Surname, :Father_name, :Git, :Phone, :Tg, :Mail, :Git
-  def initialize(name:, surname:, father_name:, id:nil, git:nil, phone:nil, tg:nil, mail:nil)
-    super(name, surname, father_name, other["id"], other["git"])
-    self.Phone=other["phone"]
-    self.Mail=other["mail"]
-    self.Tg=other["tg"]
+  def initialize(name:, surname:, father_name:, id:, git:, mail:, tg:, phone:)
+    super(name, surname, father_name, id, git)
+    set_contacts(mail:mail, tg:tg, phone:phone)
   end
 
   def self.phone_valid?(phone)
@@ -54,6 +52,7 @@ class Student<Super_Student
     info=@Name.to_s+" "+@Surname.to_s+" "+@Father_name.to_s+" "
     info+=tg_to_s
     info+=phone_to_s
+    info+=git_to_s
     info
   end
 
