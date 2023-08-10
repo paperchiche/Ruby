@@ -5,7 +5,7 @@ class Student_list_DB < Basic_format
 
   private
   def format_to_hash(str: )
-    return  JSON.parse(str)
+    return  JSON.parse(str, {:symbolize_names => true})
   end
 
   def hash_to_format(hash: )
@@ -18,7 +18,7 @@ class Student_list_DB < Basic_format
   end
 
   def read_file(rfile:)
-    results = client.query("SELECT * FROM student", symbolize_keys: true)
+    results = client.query("SELECT * FROM student", symbolize_keys: true).to_a
     return JSON.pretty_generate(results)
   end
 
@@ -27,6 +27,15 @@ class Student_list_DB < Basic_format
     self.client.query insert_query
   end
 
-  attr_accessor client = DB_singleton.instance.db_client
+  public
+  attr_accessor :client
+  def initialize
+    self.client = Mysql2::Client.new(
+      host: 'localhost',
+      username: 'root',
+      password: '12345',
+      database: 'students'
+    )
+  end
 
 end

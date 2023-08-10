@@ -18,12 +18,13 @@ class Basic_list
 
 
   def get_k_n_student_short_list(k:, n:, data_list: nil)
-    accum_list = self.list[((k-1)*n)..(k*n)]
+    accum_list = self.list[(k*n)...(k*n + n)]
     short_student_list = accum_list.map {|stud| Student_short.from_student(stud)}
     if data_list.nil?
       return data_list_student_short.new(objects: short_student_list)
     else
-      return data_list.list.append(*short_student_list)
+      data_list.list = short_student_list
+      return data_list
     end
   end
 

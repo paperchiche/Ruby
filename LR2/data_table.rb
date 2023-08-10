@@ -2,41 +2,31 @@ class Data_table
 
   attr_reader :rows_count, :cols_count
 
-  def initialize(table)
-    self.rows_count = table.length
-    max_cols = 0
-    table.each do |row|
-      max_cols = row.length if row.size > max_cols
-    end
-    self.cols_count = max_cols
+    private
+  attr_writer :table
+  public
+  attr_reader :table
+  def initialize(table:)
     self.table = table
   end
 
-  def get(row, col)
-    return nil if row >= self.rows_count || row.negative?
-    return nil if col >= self.cols_count || col.negative?
-
-    table[row][col]
+  def get_element(row:, col:)
+    return self.table[row][col]
   end
 
-  private
-  def rows_count
-    @rows_count
+  def get_rows_number
+    return self.table.size
   end
 
-  def rows_count=(rows_count)
-    @rows_count=rows_count
+  def each(&block)
+    table.each do |row|
+      block.call(row)
+    end
   end
 
-  def cols_count
-    @cols_count
+  def get_cols_number
+    return 0 if table.size == 0
+    return self.table[0].size
   end
-
-  def cols_count=(cols_count)
-    @cols_count=cols_count
-  end
-
-  attr_accessor :table
-  attr_writer :rows_count, :cols_count
 
 end
