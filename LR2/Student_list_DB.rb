@@ -2,6 +2,7 @@ class Student_list_DB < Basic_format
   require_relative 'Basic_format'
   require 'mysql2'
   require_relative 'DB_singleton'
+  require 'json'
 
   private
   def format_to_hash(str: )
@@ -19,6 +20,7 @@ class Student_list_DB < Basic_format
 
   def read_file(rfile:)
     results = client.query("SELECT * FROM student", symbolize_keys: true).to_a
+    puts results
     return JSON.pretty_generate(results)
   end
 

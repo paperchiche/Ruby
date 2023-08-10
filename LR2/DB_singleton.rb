@@ -9,6 +9,7 @@ class DB_singleton
   def initialize
     self.db_client = Mysql2::Client.new(host: "localhost",
                                         username: "root",
+                                        password: '12345',
                                         database: "students")
   end
 

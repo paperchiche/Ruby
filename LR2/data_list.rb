@@ -1,22 +1,28 @@
+require_relative 'data_table'
 class Data_list
+  private
+  attr_accessor :selected
+  public
+  attr_accessor :list
 
-  def initialize(data)
-    self.data_list = data
-    self.selected_data = []
+  def initialize(list:)
+    self.list = list
   end
+
   def select(*numbers)
-    selected_data.append(*numbers)
+    self.selected.append(self.list[number])
   end
   def get_select
-    selected_data.inject([]) {|res, index| res<<data_list[index].id}
+    temp = self.selected
+    self.selected = []
+    return temp
   end
   def clear_selected
     self.selected_data = []
   end
 
-  # применение паттерна Шаблон
   def get_names
-    raise NotImplementedError, "This method is implemented in subclasses"
+    return ["№", *get_objects_attr_names]
   end
 
   def get_information(obj)
@@ -24,11 +30,17 @@ class Data_list
   end
 
   def get_data
-    student_data = []
-    self.data_list.map.with_index do |student, i|
-      student_data.append([i].append(self.get_information(student)))
-    end
-    Data_table.new(student_data)
+    table = []
+    counter = 0
+    list.each { |obj| table.append([counter, *get_objects_attr(obj)]); counter += 1}
+    return Data_table.new(table: table)
+  end
+
+  def get_objects_attr(obj)
+    return []
+  end
+  def get_objects_attr_names()
+    return []
   end
 
   private

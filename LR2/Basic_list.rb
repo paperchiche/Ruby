@@ -21,7 +21,7 @@ class Basic_list
     accum_list = self.list[(k*n)...(k*n + n)]
     short_student_list = accum_list.map {|stud| Student_short.from_student(stud)}
     if data_list.nil?
-      return data_list_student_short.new(objects: short_student_list)
+      return Data_List_Student_Short.new(list: short_student_list)
     else
       data_list.list = short_student_list
       return data_list
@@ -64,9 +64,13 @@ class Basic_list
     return nil
   end
 
+  def sort_si
+    self.list.sort_by! {|obj| obj.get_short}
+  end
+
   def read_list(rfile: nil)
     hash_array = format.file_data_to_hash(rfile:rfile)
-    self.list = hash.map{|stud| Student.new(**stud)}
+    self.list = hash_array.map{|stud| Student.new(**stud)}
   end
 
   private

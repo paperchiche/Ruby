@@ -8,7 +8,7 @@ class MainWindow < FXMainWindow
   attr_reader :table, :tabBook
 
   def initialize(app)
-    super(app, "StudentListView2" , :width => 650, :height => 500)
+    super(app, "StudentListView" , :width => 650, :height => 500)
 
     self.tabBook = FXTabBook.new(self)
     tabFrame1 = FXTabItem.new(self.tabBook, "Вкладка 1", nil)
