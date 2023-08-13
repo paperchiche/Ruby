@@ -15,7 +15,6 @@ class Super_Student
   end
 
   def ID=(id)
-    raise ArgumentError("Invalid value, id is digit sequence") if !id.nil? && !Super_Student.id_valid?(id)
     @ID = id
   end
 

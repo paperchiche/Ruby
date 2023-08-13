@@ -23,6 +23,21 @@ class StudentListController
     @cur_page
   end
 
+  def del_selected
+    id_array = self.data_list_student_short.get_selected
+    id_array.each do |id|
+      self.list.delete_byID(id: id)
+    end
+  end
+
+  def unselect
+    self.data_list_student_short.unselect
+  end
+
+  def select(id)
+    self.data_list_student_short.select(id)
+  end
+
   def page_count
     if not self.list.nil? then
       (self.list.get_student_short_count.to_f / self.table_row_count).ceil
